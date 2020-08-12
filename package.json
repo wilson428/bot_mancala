@@ -1,0 +1,26 @@
+{
+  "name": "bot_mancala",
+  "version": "0.0.1",
+  "description": "A mancala bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilson428/bot_mancala.git"
+  },
+  "keywords": [
+    "mancala",
+    "games"
+  ],
+  "author": "Chris Wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilson428/bot_mancala/issues"
+  },
+  "homepage": "https://github.com/wilson428/bot_mancala#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}

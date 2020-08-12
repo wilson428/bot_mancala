@@ -1,0 +1,74 @@
+{
+	"wrap": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 4, 4, 8 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 3, 0, 13 ]
+		},
+		"moves": [ "bin_A1", "bin_B1", "bin_A3"],
+		"comment": "Make sure we don't deposite stones in the opponent's basin"		
+	},
+	"capture1": {
+		"A": {
+			"basin": 0,
+			"bins": [ 0, 4, 4, 4, 4, 8 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 3, 0, 13 ]
+		},
+		"moves": [ "bin_A1" ],
+		"comment": "A captures 13 of B's stones in bin_B1"		
+	},
+	"capture2": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 3, 10, 3 ]
+		},
+		"B": {
+			"basin": 0,			
+			"bins": [ 4, 0, 4, 8, 0, 8 ]
+		},
+		"moves": [ "bin_A1" ],
+		"comment": "Not a capture since we landed in an empty bin on the opposite side"
+	},
+	"endGame1": {
+		"A": {
+			"basin": 22,
+			"bins": [ 0, 0, 0, 0, 0, 1 ]
+		},
+		"B": {
+			"basin": 10,			
+			"bins": [ 0, 0, 10, 3, 0, 2 ]
+		},
+		"moves": [ "bin_A1" ],
+		"comment": "Player B wins 25-23"
+	},
+	"endGame2": {
+		"A": {
+			"basin": 23,
+			"bins": [ 0, 0, 0, 0, 2, 1 ]
+		},
+		"B": {
+			"basin": 5,			
+			"bins": [ 0, 0, 10, 3, 2, 2 ]
+		},
+		"moves": [ "bin_A1", "bin_A2" ],
+		"comment": "Make sure `playUntilEnd` is false. Player A wins 25-5"
+	},
+	"endGame3": {
+		"A": {
+			"basin": 5,			
+			"bins": [ 1, 1, 9, 3, 2, 3 ]
+		},
+		"B": {
+			"basin": 19,
+			"bins": [ 0, 0, 0, 3, 1, 1 ]
+		},
+		"moves": ["bin_A6", "bin_B1", "bin_B3", "bin_B1", "bin_B2", "bin_B1" ],
+		"comment": "It's a tie"
+	}		
+}
