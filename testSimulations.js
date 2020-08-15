@@ -45,7 +45,7 @@ function simulateTurn(g, player_id) {
 		clones = clones.concat(simulateMove(g, possibleMove));
 	});
 
-	console.log(clones.length);
+	console.log(clones.map(d => { return [ d.settings.id, d.settings.name, d.moves ] }));
 
 	return clones;
 }
@@ -65,10 +65,9 @@ function testScenario(scenario) {
 	}
 }
 
-let outcomes = simulateTurn(game, "A")
+let clones = simulateMove(game, "A4")
 
-console.log(outcomes.map(d => { return [ d.settings.id, d.settings.name ] }));
-
+console.log(clones.length);
 
 // game.print();
 // testScenario(scenarios.tests.endGame3);

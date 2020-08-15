@@ -1,3 +1,4 @@
+const colors = require('colors');
 const Board = require("./Core.js");
 
 Board.prototype.evaluateGame = function() {
@@ -70,6 +71,10 @@ Board.prototype.evaluateGame = function() {
 }
 
 Board.prototype.move = function(bin_id) {
+	if (bin_id.length == 2) {
+		bin_id = "bin_" + bin_id;
+	}
+
 	if (!this.active) {
 		this.announce(`You tried to move ${ bin_id }, but the game is over.`, 1);
 		return;
@@ -90,6 +95,8 @@ Board.prototype.move = function(bin_id) {
 		return;
 	}
 
+	this.announce(`${ this.settings.name }: Player ${ this.turn } selected ${ bin_id }`, 0);
+
 	this.moves.push(bin_id);
 
 	currentBin.stones = 0;
@@ -109,7 +116,6 @@ Board.prototype.move = function(bin_id) {
 
 		this.announce(`Player ${ this.turn } makes a capture, stealing ${ currentBin.opposite.stones } stones from ${ currentBin.opposite.id }`, 2);
 	}
-
 
 	if (currentBin.id !== "basin_" + this.turn) {
 		this.turn = this.turn === "A" ? "B" : "A";
@@ -133,6 +139,12 @@ Board.prototype.move = function(bin_id) {
 
 Board.prototype.getAvailableMoves = function(player_id) {
 	let availableBins = [];
+
+	if (this.turn != player_id) {
+		this.announce(`${ player_id } has no available moves since it is not her turn`)
+		return availableBins;
+	}
+
 	for (let c = 1; c <= 6; c += 1) {
 		let bin_id = "bin_" + player_id + c;
 		if (this.bins[bin_id].stones > 0) {

@@ -1,0 +1,15 @@
+{
+	"wrap": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 4, 4, 8 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 0, 4, 3, 0, 13 ]
+		},
+		"moves": [ "bin_A1", "bin_B1", "bin_A3"],
+		"comment": "Make sure we don't deposite stones in the opponent's basin"		
+	}
+	
+}

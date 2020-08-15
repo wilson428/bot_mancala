@@ -11,6 +11,7 @@ BOT MANCALA
 */
 
 const colors = require('colors');
+const shortid = require('shortid');
 
 const Bin = function(player, number, stoneCount) {	
 	if (stoneCount === 0) {
@@ -36,18 +37,33 @@ Bin.prototype.stringify = function() {
 
 const Board = function(options) {
 	let default_settings = {
+		id: null,
+		name: null,
 		LOG_LEVEL: 0, // 0: debug, 1: warn, 2: important
 		playUntilEnd: true,
-		firstTurn: "A"
+		firstTurn: "A",
 	}
 
 	options = options || {};
 	this.settings = Object.assign(default_settings, options);
 
+	// non-settable settings
+
+	let uid = shortid.generate();
+
+	this.settings.id = uid;
+	if (!this.settings.name) {
+		this.settings.name = "Game " + uid;
+	}
+
+	this.settings.time_start = (new Date()).getTime();
+	this.settings.time_end = null;
+
 	this.turn = this.settings.firstTurn;
 	this.moves = [];
 	this.active = true;
 	this.scoreboard = null;
+	this.timesCloned = 0; // useful for unique names of clones
 
 	// set up the bins
 	this.bins = {
@@ -107,6 +123,12 @@ Board.prototype.announce = function(msg, log_level) {
 }
 
 Board.prototype.print = function() {
+
+	let l = this.settings.name.length;
+	let right = Math.max(0, Math.floor((41 - l) / 2));
+	let left = Math.max(0, Math.ceil((41 - l) / 2));
+
+	console.log(`${ '-'.repeat(right)}${ this.settings.name }${ '_'.repeat(left) }`);
 	console.log(`-----------------------------------------`.gray);
 	console.log(
 		`|    `.gray +
@@ -161,6 +183,25 @@ Board.prototype.loadScenario = function(scenario) {
 		this.bins["bin_A" + (6 - c)].stones = scenario.A.bins[c];
 		this.bins["bin_B" + (6 - c)].stones = scenario.B.bins[c];
 	}
+
+	this.moves = scenario.moves;
+}
+
+// this is sloppy, but we need granular control over what gets cloned
+Board.prototype.clone = function() {
+	this.timesCloned += 1;
+
+	let cloneSettings = Object.assign({}, this.settings);
+
+	cloneSettings.name += " c" + this.timesCloned;
+
+	let clone = new Board(cloneSettings);
+
+	clone.loadScenario(this.serialize());
+	clone.turn = this.turn;
+	clone.moves = this.moves.slice(0);
+
+	return clone;
 }
 
 module.exports = Board;

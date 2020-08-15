@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/wilson428/bot_mancala#readme",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "shortid": "^2.2.15",
+    "uuid": "^8.3.0"
   }
 }
