@@ -119,6 +119,7 @@ Board.prototype.move = function(bin_id) {
 
 	if (currentBin.id !== "basin_" + this.turn) {
 		this.turn = this.turn === "A" ? "B" : "A";
+		this.turnCount += 1;
 	}
 
 	this.scoreboard = this.evaluateGame();

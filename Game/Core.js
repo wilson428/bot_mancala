@@ -60,6 +60,8 @@ const Board = function(options) {
 	this.settings.time_end = null;
 
 	this.turn = this.settings.firstTurn;
+
+	this.turnCount = 0;
 	this.moves = [];
 	this.active = true;
 	this.scoreboard = null;
@@ -193,7 +195,8 @@ Board.prototype.clone = function() {
 
 	let cloneSettings = Object.assign({}, this.settings);
 
-	cloneSettings.name += " c" + this.timesCloned;
+	// cloneSettings.name += "." + this.timesCloned;
+	cloneSettings.name = this.name;
 
 	let clone = new Board(cloneSettings);
 

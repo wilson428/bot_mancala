@@ -1,0 +1,1036 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ne",
+				"nextTurn"
+			],
+			[
+				"sim",
+				"simulateTurn"
+			],
+			[
+				"las",
+				"lastLine"
+			],
+			[
+				"mapW",
+				"mapWorldHotspots"
+			],
+			[
+				"mo",
+				"moduleName"
+			],
+			[
+				"min-",
+				"min-width"
+			],
+			[
+				"boxSc",
+				"boxScoreHeader"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"box",
+				"boxScore"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"con",
+				"containerWidth"
+			],
+			[
+				"data",
+				"dataset"
+			],
+			[
+				"colo",
+				"colorScale_RED"
+			],
+			[
+				"shar",
+				"shareByState"
+			],
+			[
+				"state",
+				"stateShare"
+			],
+			[
+				"draw",
+				"drawPartI"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"query",
+				"querySelectorAll"
+			],
+			[
+				"dis",
+				"district_url"
+			],
+			[
+				"distr",
+				"districts"
+			],
+			[
+				"dist",
+				"district_keys"
+			],
+			[
+				"di",
+				"districts"
+			],
+			[
+				"schoo",
+				"school_count"
+			],
+			[
+				"get",
+				"getCounty"
+			],
+			[
+				"count",
+				"county_url"
+			],
+			[
+				"cu",
+				"current_bin"
+			],
+			[
+				"pos",
+				"positionLabel"
+			],
+			[
+				"POS",
+				"POSITION"
+			],
+			[
+				"rotat",
+				"rotateBoard"
+			],
+			[
+				"IN",
+				"IN_MOTION"
+			],
+			[
+				"PO",
+				"POSITION_A"
+			],
+			[
+				"stat",
+				"states_g"
+			],
+			[
+				"color",
+				"colorScale"
+			],
+			[
+				"SCALES",
+				"xScales"
+			],
+			[
+				"xDa",
+				"xDate"
+			],
+			[
+				"xD",
+				"xDay"
+			],
+			[
+				"days",
+				"day_since_cutoff"
+			],
+			[
+				"TICK",
+				"TICKS_Y"
+			],
+			[
+				"rad",
+				"radioButton"
+			],
+			[
+				"op",
+				"optionNodes"
+			],
+			[
+				"on",
+				"onHover"
+			],
+			[
+				"da",
+				"day_since_cutoff"
+			],
+			[
+				"upd",
+				"update_chart"
+			],
+			[
+				"highl",
+				"highlightState"
+			],
+			[
+				"stateD",
+				"state_dropdown"
+			],
+			[
+				"stateNam",
+				"stateNames"
+			],
+			[
+				"sele",
+				"selections"
+			],
+			[
+				"minD",
+				"minDate"
+			],
+			[
+				"x",
+				"x_days"
+			],
+			[
+				"day",
+				"day_since_cutoff"
+			],
+			[
+				"x_",
+				"x_days"
+			],
+			[
+				"day_",
+				"day_since_cutoff"
+			],
+			[
+				"word",
+				"word_count"
+			],
+			[
+				"wo",
+				"word_count"
+			],
+			[
+				"per",
+				"total_per_capita"
+			],
+			[
+				"total",
+				"total_per_capita"
+			],
+			[
+				"typ",
+				"type_x"
+			],
+			[
+				"by",
+				"byState"
+			],
+			[
+				"pop",
+				"population"
+			],
+			[
+				"max",
+				"maxSum"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"ax",
+				"axes_layer"
+			],
+			[
+				"coun",
+				"countryID"
+			],
+			[
+				"cou",
+				"countryID"
+			],
+			[
+				"tick",
+				"tickFormat"
+			],
+			[
+				"interpo",
+				"interpolateGreens"
+			],
+			[
+				"bas",
+				"base_coordinates"
+			],
+			[
+				"new",
+				"new_longitude"
+			],
+			[
+				"new_l",
+				"new_longitude"
+			],
+			[
+				"new_",
+				"new_latitude"
+			],
+			[
+				"loc",
+				"locations"
+			],
+			[
+				"MA",
+				"MAX_COUNT"
+			],
+			[
+				"chart",
+				"chartSlider"
+			],
+			[
+				"char",
+				"chartSlider"
+			],
+			[
+				"HE",
+				"CHART_HEIGHT"
+			],
+			[
+				"ch",
+				"chartSlider"
+			],
+			[
+				"ex",
+				"expCum"
+			],
+			[
+				"cas",
+				"caseCount"
+			],
+			[
+				"place",
+				"placeDot"
+			],
+			[
+				"pixel",
+				"pixelData"
+			],
+			[
+				"pixe",
+				"pixelData"
+			],
+			[
+				"pla",
+				"place"
+			],
+			[
+				"cand",
+				"candidate"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"inter",
+				"interactive"
+			],
+			[
+				"can",
+				"candidate"
+			],
+			[
+				"deleg",
+				"delegateBlocs"
+			],
+			[
+				"won",
+				"wonAnyway"
+			],
+			[
+				"re",
+				"recomputed"
+			],
+			[
+				"com",
+				"computedDelegates"
+			],
+			[
+				"ca",
+				"candidates"
+			],
+			[
+				"candid",
+				"candidates"
+			],
+			[
+				"sub",
+				"subPercent"
+			],
+			[
+				"off",
+				"officialDelegateTotal"
+			],
+			[
+				"dele",
+				"delegates"
+			],
+			[
+				"cumu",
+				"cumulativeByDate"
+			],
+			[
+				"cum",
+				"cumulativeByDate"
+			],
+			[
+				"prim",
+				"primary_0"
+			],
+			[
+				"comp",
+				"computed"
+			],
+			[
+				"del",
+				"delegateCount"
+			],
+			[
+				"vote",
+				"voteCount"
+			],
+			[
+				"vo",
+				"voteCount"
+			],
+			[
+				"of",
+				"officialDelegateCount"
+			],
+			[
+				"rem",
+				"remainder"
+			],
+			[
+				"delega",
+				"delegateCounts"
+			],
+			[
+				"sta",
+				"statePostal"
+			],
+			[
+				"repo",
+				"reportingUnits"
+			],
+			[
+				"getR",
+				"getRaceIDs"
+			],
+			[
+				"tic",
+				"tickValues"
+			],
+			[
+				"pro",
+				"projection"
+			],
+			[
+				"select",
+				"selectAll"
+			],
+			[
+				"curre",
+				"currentDensity"
+			],
+			[
+				"cur",
+				"currentPolygon"
+			],
+			[
+				"countyCo",
+				"countyCoordinateLookup"
+			],
+			[
+				"Coo",
+				"countyCoordinateLookup"
+			],
+			[
+				"MIN_",
+				"MIN_PROXIMITY"
+			],
+			[
+				"futu",
+				"futureProximity"
+			],
+			[
+				"subpa",
+				"subpaths"
+			],
+			[
+				"subp",
+				"subpaths"
+			],
+			[
+				"futur",
+				"futurePolygon"
+			],
+			[
+				"me",
+				"measureBottlenecks"
+			],
+			[
+				"stro",
+				"stroke-width"
+			],
+			[
+				"po",
+				"points"
+			],
+			[
+				"coo",
+				"coordinatesOuter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 1909,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Actions.js",
+			"settings":
+			{
+				"buffer_size": 4196,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Core.js",
+			"settings":
+			{
+				"buffer_size": 5179,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"json",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"htm",
+				"HTMLPrettify"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"JSON",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"hmtl",
+				"HTMLPrettify"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"spell",
+				"Google Spell Check"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"valid",
+				"JsValidate"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html\t",
+				"HTMLPrettify"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"shell",
+				"ShellCommand"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"pretty",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"ui",
+				"UI: Select Color Scheme"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 137.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/wilson/Dropbox/Private/time/apps/development/center_of_covid/code/condense.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/mapUS.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/center_of_covid/code/data/US.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/code/condense.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/timeSeries.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/timeSeries.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/mapChartUS.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/styles.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/data/dashboardData.json",
+		"/Users/wilson/Desktop/test.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartWorld/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/shareChart/index.js",
+		"/Users/wilson/Dropbox/Private/time/transfer_interactives/local_transfer.sh",
+		"/Users/wilson/Dropbox/Private/time/transfer_interactives/commands.md",
+		"/Users/wilson/.bash_profile",
+		"/Users/wilson/Desktop/lit/EJ2.md",
+		"/Users/wilson/Desktop/lit/helping_hand.md",
+		"/Users/wilson/Desktop/lit/EJ.md",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/CloudMultiverse/commands.md",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/CloudMultiverse/wiki/config.yml",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/CloudMultiverse/wiki/accounts.md",
+		"/Users/wilson/Dropbox/Private/writing/Sasquatch/transcriptions/Part III.md",
+		"/Users/wilson/Dropbox/Private/writing/Sasquatch/transcriptions/outtakes.md",
+		"/Users/wilson/Dropbox/Private/writing/Sasquatch/transcriptions/Part II.md",
+		"/Users/wilson/Desktop/lit/Ester_outtakes.mc",
+		"/Users/wilson/Desktop/lit/Ester.txt",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/.gitignore",
+		"/Users/wilson/Dropbox/Private/time/apps/development/R/covidr/.gitignore",
+		"/Users/wilson/Dropbox/Private/time/apps/development/R/covidr/deploy.sh",
+		"/Users/wilson/Dropbox/Private/time/apps/development/R/covidr/update.sh",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/boxScore/boxScoreTable.ejs.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/embed.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/index.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/time-interactive.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/partIII.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/partII.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/partI.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/src/base.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapUS/mapUS.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/data/shareByState.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/archived/state_intervention/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapUS/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/lib/interactive-tools/lib/selections.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/lib/interactive-tools/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/lib/d3maps/states/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/lib/d3maps/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/misc/ca_segregation_schools/code/response.json",
+		"/Users/wilson/Dropbox/Private/time/apps/misc/ca_segregation_schools/code/data/schools.json",
+		"/Users/wilson/Dropbox/Private/time/apps/development/confederacy_of_statues/code/analyze/Analyze_Results.ipynb",
+		"/Users/wilson/Dropbox/Private/time/apps/misc/ca_segregation_schools/code/data/counties.json",
+		"/Users/wilson/Dropbox/Private/time/apps/misc/ca_segregation_schools/code/getSchools.js",
+		"/Users/wilson/Dropbox/Private/time/apps/misc/ca_segregation_schools/code/processed/schools.csv",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/addMethods.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/addTargets.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/buildScene.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/makeLabels.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/addFrames.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/placeStones.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/assembleBoard.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/lib/makeStone.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/covid_fatality_comparison/data/comparison.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/covid_fatality_comparison/src/base.html",
+		"/Users/wilson/Dropbox/Private/games/mancalia/README.md",
+		"/Users/wilson/Dropbox/Private/games/mancalia/assets/physijs/physi.js",
+		"/Users/wilson/Dropbox/Private/games/mancalia/app/index.html",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/_posts/amazon-aws-https-ssl-missing-manual/commands.md",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/about.md",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/css/scribe.scss",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/_posts/algae-growth-visualization/draft.md",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/_posts/amazon-aws-https-ssl-missing-manual/draft.md",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/src/_posts/fix-dropbox-conflicts-automatically/draft.md",
+		"/Users/wilson/Dropbox/Private/scribe/mechanicalscribe/build_local.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/src/base.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/src/base.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/stashed/vax_policy_map/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/data/US.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/package.json",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/lib/interactive-tools/lib/inputs.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/lib/d3charts/index.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/src/styles.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/src/time-interactive.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/lib/interactive-tools/lib/selections.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/lib/interactive-tools/styles/styleSelect.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_COVID_curves/data/state_population.csv",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/_finished/whos_my_candidate/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/data/Germany.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/covid19_models/debug.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/data/South Korea.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/data/Singapore.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/data/US.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/code/state_abbrs.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/state_intervention/code/cleanData.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/COVID-19/who_covid_19_situation_reports/README.md",
+		"/Users/wilson/Desktop/dede/page1_red_dot.html",
+		"/Users/wilson/Desktop/dede/new_project.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/src/styles.scss",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/src/base.html",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/data/locations.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/data/cases2_locations.csv",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/data/cases_2.7_13266703.csv",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/All-Scales/samples/format.sh",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/All-Scales/README.md",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/All-Scales/code/computeScales.js",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/All-Scales/styles.scss.js",
+		"/Users/wilson/Dropbox/Private/repos/MechanicalScribe/All-Scales/index.html",
+		"/Users/wilson/Dropbox/Private/repos/HNIL/text.txt",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/debug.js",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/src/base.html",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/src/styles.scss",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/data/all_1.json",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/summarized/VA.json",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/data/new_cases_by_location.json",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/code/parseNewCases.js",
+		"/Users/wilson/Dropbox/Private/time/apps/development/coronavirus_us/data/new_cases.json",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/getAlternate.js",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/getTotals.js",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/0-getResults.js",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/calculated/AL.json",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/results/AL.json",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/delegateCount.csv",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/getDistricts.js",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/results/AR.json",
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/computed/SC.json"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1763,
+								1763
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "javascript"
+							},
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 814.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Game/Actions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3241,
+								3241
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "javascript"
+							},
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1268.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Game/Core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1354,
+								1354
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "javascript"
+							},
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 516.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 109.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "bot_mancala.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 180.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 1076.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

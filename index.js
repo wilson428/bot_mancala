@@ -21,34 +21,63 @@ let game = new Game({
 	playUntilEnd: true
 });
 
-// test a give move
-function simulateMove(g, bin_id) {
+// test a given move
+function simulateMove(g, bin_id, depth) {
 	let clone = g.clone();
 	clone.move(bin_id);
 	clone.print();
 
-	if (clone.turn == "A") {
-		return simulateTurn(clone, "A");
+	// if we ended in a basin, keep going
+	if (clone.turn == g.turn) {
+		return simulateTurn(clone, depth + 1);
 	}
 
 	return clone;
 }
 
-function simulateTurn(g, player_id) {
+function simulateTurn(g, depth) {
 	let clones = [];
 
-	let possibleMoves = g.getAvailableMoves(player_id);
+	depth = depth || 0;
 
-	console.log("Possible Moves for game", g.settings.id + ": " + possibleMoves)
+	let possibleMoves = g.getAvailableMoves(g.turn);
+
+	console.log(`Possible moves for player ${ g.turn } in game ${ g.settings.name }: ${ possibleMoves.join(", ")}`)
 
 	possibleMoves.forEach(possibleMove => {
-		clones = clones.concat(simulateMove(g, possibleMove));
+		clones = clones.concat(simulateMove(g, possibleMove, depth));
 	});
 
-	console.log(clones.length);
-
+	if (depth == 0) {
+		console.log(`Games after ${ clones[0].turnCount } turn(s): ${ clones.length }`);
+	}
 	return clones;
 }
+
+function lookAhead(games, moves) {
+	if (!Array.isArray(games)) {
+		games = [ games ];
+	}
+
+	if (typeof moves == "undefined") {
+		moves = 1;
+	}
+
+	let nextTurn = [];
+
+	games.forEach(game => {
+		nextTurn = nextTurn.concat(simulateTurn(game))
+	});
+
+	moves -= 1;
+
+	if (moves == 0) {
+		return nextTurn;
+	}
+
+	lookAhead(nextTurn, moves);
+}
+
 
 function testScenario(scenario) {
 	game.loadScenario(scenario);
@@ -65,9 +94,11 @@ function testScenario(scenario) {
 	}
 }
 
-let outcomes = simulateTurn(game, "A")
+let outcomes = lookAhead(game, 2);
 
-console.log(outcomes.map(d => { return [ d.settings.id, d.settings.name ] }));
+console.log(outcomes.length);
+
+// console.log(outcomes.map(d => { return [ d.settings.id, d.settings.name ] }));
 
 
 // game.print();
