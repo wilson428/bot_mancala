@@ -1,4 +1,17 @@
 {
+	"basic": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"moves": [ "bin_A2"],
+		"comment": "A basic move that doesn't end in a basin."		
+
+	},
 	"wrap": {
 		"A": {
 			"basin": 0,
@@ -9,9 +22,9 @@
 			"bins": [ 4, 0, 4, 3, 0, 13 ]
 		},
 		"moves": [ "bin_A1", "bin_B1", "bin_A3"],
-		"comment": "Make sure we don't deposite stones in the opponent's basin"		
+		"comment": "Make sure we don't deposite stones in the opponent's basin, or let A go when it's not her turn"		
 	},
-	"capture1": {
+	"capture": {
 		"A": {
 			"basin": 0,
 			"bins": [ 0, 4, 4, 4, 4, 8 ]
@@ -21,9 +34,9 @@
 			"bins": [ 4, 0, 4, 3, 0, 13 ]
 		},
 		"moves": [ "bin_A1" ],
-		"comment": "A captures 13 of B's stones in bin_B1"		
+		"comment": "Player A captures 13 of B's stones in bin_B1"		
 	},
-	"capture2": {
+	"not_a_capture": {
 		"A": {
 			"basin": 0,
 			"bins": [ 4, 0, 4, 3, 10, 3 ]
@@ -33,7 +46,7 @@
 			"bins": [ 4, 0, 4, 8, 0, 8 ]
 		},
 		"moves": [ "bin_A1" ],
-		"comment": "Not a capture since we landed in an empty bin on the opposite side"
+		"comment": "Make sure it's not a capture if the player lands in an empty bin on the opposite side"
 	},
 	"endGame1": {
 		"A": {
@@ -45,7 +58,7 @@
 			"bins": [ 0, 0, 10, 3, 0, 2 ]
 		},
 		"moves": [ "bin_A1" ],
-		"comment": "Player B wins 25-23"
+		"comment": "A basic finale in which Player A finishes but doesn't have enough points. Player B should win 25-23"
 	},
 	"endGame2": {
 		"A": {
@@ -56,8 +69,11 @@
 			"basin": 5,			
 			"bins": [ 0, 0, 10, 3, 2, 2 ]
 		},
-		"moves": [ "bin_A1", "bin_A2" ],
-		"comment": "Make sure `playUntilEnd` is false. Player A wins 25-5"
+		"moves": [ "bin_A1", "bin_A2", "bin_A5" ],
+		"settings": {
+			"playUntilEnd": false
+		},
+		"comment": "Testing the 25-point stopping point. Player A should win 25-5"
 	},
 	"endGame3": {
 		"A": {
@@ -69,6 +85,6 @@
 			"bins": [ 0, 0, 0, 3, 1, 1 ]
 		},
 		"moves": ["bin_A6", "bin_B1", "bin_B3", "bin_B1", "bin_B2", "bin_B1" ],
-		"comment": "It's a tie"
+		"comment": "Should be a tie when Player B's remaining stones are apportioned."
 	}		
 }

@@ -1,2 +1,2 @@
 
-module.exports = require("./Actions")
+module.exports = require("./Game")

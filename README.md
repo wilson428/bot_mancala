@@ -1,6 +1,23 @@
+# Mancala Bot
+
+A simulation of the standard American version of Mancala, including logic for a computer opponent.
+
+## Ethical Agreement
+
+By cloning or forking this repo, you solemnly agree that you will not use it as aid while actively playing a human without disclosing that you're getting a little help from a computer. The purpose of this simulation is to learn strategies on your own time or develop a bot for others to practice against. Mancala is a wonderful game that should not be taken over by machines.
+
+## Terminology
+
++ *Bins*: The twelve smaller pods in which the stones are placed at the beginning of the game, six on each side.
++ *Basins*: The two longer pair of pods at opposite ends of the board where points are stored.
++ *Move*: A single selection of a populated bin by the current player
++ *Turn*: A player's complete action, which can involve multiple moves if she lands in a basin.
+
+# LICENSE
+
 MIT License
 
-Copyright (c) 2019 Chris Wilson
+Copyright (c) 2020 Chris Wilson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -10,7 +10,9 @@ BOT MANCALA
 
 */
 
+
 const Game = require("./Game")
+const Simulation = require("./BotMancala")
 
 const scenarios = {
 	tests: require("./scenarios/tests.json")
@@ -21,34 +23,13 @@ let game = new Game({
 	playUntilEnd: true
 });
 
-// test a give move
-function simulateMove(g, bin_id) {
-	let clone = g.clone();
-	clone.move(bin_id);
-	clone.print();
+console.dir(game);
 
-	if (clone.turn == "A") {
-		return simulateTurn(clone, "A");
-	}
+let simulation = new Simulation(game);
 
-	return clone;
-}
+simulation.tryEveryMove();
 
-function simulateTurn(g, player_id) {
-	let clones = [];
-
-	let possibleMoves = g.getAvailableMoves(player_id);
-
-	console.log("Possible Moves for game", g.settings.id + ": " + possibleMoves)
-
-	possibleMoves.forEach(possibleMove => {
-		clones = clones.concat(simulateMove(g, possibleMove));
-	});
-
-	console.log(clones.map(d => { return [ d.settings.id, d.settings.name, d.moves ] }));
-
-	return clones;
-}
+console.log(simulation);
 
 function testScenario(scenario) {
 	game.loadScenario(scenario);
@@ -65,9 +46,8 @@ function testScenario(scenario) {
 	}
 }
 
-let clones = simulateMove(game, "A4")
-
-console.log(clones.length);
+// let clone = Simulation.simulateTurn()
+// console.log(clones.clones);
 
 // game.print();
 // testScenario(scenarios.tests.endGame3);

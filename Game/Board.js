@@ -10,9 +10,6 @@ BOT MANCALA
 
 */
 
-const colors = require('colors');
-const shortid = require('shortid');
-
 const Bin = function(player, number, stoneCount) {	
 	if (stoneCount === 0) {
 		this.id = "basin_" + player;
@@ -35,38 +32,7 @@ Bin.prototype.stringify = function() {
 	return String(this.stones);
 }
 
-const Board = function(options) {
-	let default_settings = {
-		id: null,
-		name: null,
-		LOG_LEVEL: 0, // 0: debug, 1: warn, 2: important
-		playUntilEnd: true,
-		firstTurn: "A",
-	}
-
-	options = options || {};
-	this.settings = Object.assign(default_settings, options);
-
-	// non-settable settings
-
-	let uid = shortid.generate();
-
-	this.settings.id = uid;
-	if (!this.settings.name) {
-		this.settings.name = "Game " + uid;
-	}
-
-	this.settings.time_start = (new Date()).getTime();
-	this.settings.time_end = null;
-
-	this.turn = this.settings.firstTurn;
-
-	this.turnCount = 0;
-	this.moves = [];
-	this.active = true;
-	this.scoreboard = null;
-	this.timesCloned = 0; // useful for unique names of clones
-
+const Board = function() {
 	// set up the bins
 	this.bins = {
 		basin_A: new Bin("A", null, 0),
@@ -109,28 +75,13 @@ const Board = function(options) {
 	}
 }
 
-// control console outlet
-Board.prototype.announce = function(msg, log_level) {
-	if (log_level < this.settings.LOG_LEVEL) {
-		return;
-	}
-
-	if (log_level == 0) {
-		console.log(msg.gray);
-	} else if (log_level == 1) {
-		console.log(msg.magenta);
-	} else {
-		console.log(msg.bold);
-	}
-}
-
-Board.prototype.print = function() {
-
-	let l = this.settings.name.length;
+Board.prototype.print = function(name) {
+	name = name || "Current Game";
+	let l = name.length;
 	let right = Math.max(0, Math.floor((41 - l) / 2));
 	let left = Math.max(0, Math.ceil((41 - l) / 2));
 
-	console.log(`${ '-'.repeat(right)}${ this.settings.name }${ '_'.repeat(left) }`);
+	console.log(`${ '-'.repeat(right)}${ name }${ '-'.repeat(left) }`);
 	console.log(`-----------------------------------------`.gray);
 	console.log(
 		`|    `.gray +
@@ -177,6 +128,61 @@ Board.prototype.serialize = function() {
 	return json;
 }
 
+// returns the info on the bin the last stone landed, whether the turn flips, and stones captured
+Board.prototype.move = function(bin_id) {
+	if (bin_id.length == 2) {
+		bin_id = "bin_" + bin_id;
+	}
+
+	let player_id = bin_id[4]; // we need to know the player so as to know which basin to skip
+	let currentBin = this.bins[bin_id];
+	let stoneCount = currentBin.stones;
+
+	let response = {
+		player_id: player_id,
+		bin_start_id: bin_id,
+		bin_end_id: null,
+		player_flip: true,
+		stones_scored: 0,
+		stones_captured: 0
+	};
+
+	currentBin.stones = 0;
+
+	// loop around the linked list of bins, with currentBin ending as the final bin
+	while (stoneCount > 0) {
+		currentBin = currentBin.next[player_id];
+		currentBin.stones += 1;
+		stoneCount -= 1;
+
+		if (/basin/.test(currentBin.id)) {
+			response.stones_scored += 1;
+		}
+	}
+
+	response.bin_end_id = currentBin.id;
+
+	// check if we ended in a basin
+	if (/basin/.test(currentBin.id)) {
+		response.player_flip = false;
+		return response;
+	}
+
+	// check for capture
+	if (player_id == currentBin.id[4] && currentBin.stones == 1 && currentBin.opposite.stones > 0) {
+		this.bins["basin_" + player_id].stones += currentBin.opposite.stones;
+		this.bins["basin_" + player_id].stones += 1; // account for the capturing stone also going to the basin
+
+		response.stones_scored += currentBin.opposite.stones;
+		response.stones_captured += currentBin.opposite.stones;
+
+		currentBin.opposite.stones = 0;
+		currentBin.stones = 0;
+	}
+
+	return response;
+}
+
 Board.prototype.loadScenario = function(scenario) {
 	this.bins.basin_A.stones = scenario.A.basin;
 	this.bins.basin_B.stones = scenario.B.basin;
@@ -185,28 +191,18 @@ Board.prototype.loadScenario = function(scenario) {
 		this.bins["bin_A" + (6 - c)].stones = scenario.A.bins[c];
 		this.bins["bin_B" + (6 - c)].stones = scenario.B.bins[c];
 	}
-
-	this.moves = scenario.moves;
 }
 
-// this is sloppy, but we need granular control over what gets cloned
-Board.prototype.clone = function() {
-	this.timesCloned += 1;
+Board.prototype.getAvailableMoves = function(player_id) {
+	let availableBins = [];
 
-	let cloneSettings = Object.assign({}, this.settings);
-
-	// cloneSettings.name += "." + this.timesCloned;
-	cloneSettings.name = this.name;
-
-	let clone = new Board(cloneSettings);
-
-	clone.loadScenario(this.serialize());
-	clone.turn = this.turn;
-	clone.moves = this.moves.slice(0);
-
-	return clone;
+	for (let c = 1; c <= 6; c += 1) {
+		let bin_id = "bin_" + player_id + c;
+		if (this.bins[bin_id].stones > 0) {
+			availableBins.push(bin_id);
+		}
+	}
+	return availableBins;
 }
 
 module.exports = Board;
-
-// console.log(game.bins);
