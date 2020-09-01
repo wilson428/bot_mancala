@@ -75,15 +75,19 @@ const Board = function() {
 	}
 }
 
-Board.prototype.print = function(name) {
+Board.prototype.print = function(name, indent) {
 	name = name || "Current Game";
+	indent = indent || 0;
+	indent = " ".repeat(indent * 4);
+
+
 	let l = name.length;
 	let right = Math.max(0, Math.floor((41 - l) / 2));
 	let left = Math.max(0, Math.ceil((41 - l) / 2));
 
-	console.log(`${ '-'.repeat(right)}${ name }${ '-'.repeat(left) }`);
-	console.log(`-----------------------------------------`.gray);
-	console.log(
+	console.log(indent + `${ '-'.repeat(right)}${ name }${ '-'.repeat(left) }`);
+	console.log(indent + `-----------------------------------------`.gray);
+	console.log(indent + 
 		`|    `.gray +
 		`| ${ this.bins.bin_B1.stringify().red } `.gray +
 		`| ${ this.bins.bin_B2.stringify().red } `.gray + 
@@ -93,8 +97,8 @@ Board.prototype.print = function(name) {
 		`| ${ this.bins.bin_B6.stringify().red } `.gray + 
 		`|    |`.gray
 	);
-	console.log(`| ${ this.bins.basin_B.stringify().bold.red } | --------------------------- | ${ this.bins.basin_A.stringify().bold.green } |`);
-	console.log(
+	console.log(indent + `| ${ this.bins.basin_B.stringify().bold.red } | --------------------------- | ${ this.bins.basin_A.stringify().bold.green } |`);
+	console.log(indent + 
 		`|    `.gray +
 		`| ${ this.bins.bin_A6.stringify().green } `.gray +
 		`| ${ this.bins.bin_A5.stringify().green } `.gray + 
@@ -104,7 +108,7 @@ Board.prototype.print = function(name) {
 		`| ${ this.bins.bin_A1.stringify().green } `.gray + 
 		`|    |`.gray
 	);
-	console.log(`-----------------------------------------`.gray);
+	console.log(indent + `-----------------------------------------`.gray);
 }
 
 Board.prototype.serialize = function() {
@@ -196,7 +200,7 @@ Board.prototype.loadScenario = function(scenario) {
 Board.prototype.getAvailableMoves = function(player_id) {
 	let availableBins = [];
 
-	for (let c = 1; c <= 6; c += 1) {
+	for (let c = 6; c >= 1; c -= 1) {
 		let bin_id = "bin_" + player_id + c;
 		if (this.bins[bin_id].stones > 0) {
 			availableBins.push(bin_id);

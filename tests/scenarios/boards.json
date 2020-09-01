@@ -1,0 +1,31 @@
+{
+	"default": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"settings": {
+			"name": "Starting_Game"
+		},
+		"comment": "The default starting board. Player A should have 10 possible moves."		
+	},
+	"multistep": {
+		"A": {
+			"basin": 18,
+			"bins": [ 0, 0, 4, 2, 0, 1 ]
+		},
+		"B": {
+			"basin": 10,
+			"bins": [ 0, 0, 8, 2, 2, 1 ]
+		},
+		"settings": {
+			"name": "Multi-Step_Move"
+		},
+		"comment": "Player A wins 25-23 if she plays A1-A4-A1-A3-A1-A2-A1."		
+	}	
+	
+}

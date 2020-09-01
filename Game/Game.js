@@ -38,9 +38,23 @@ const Game = function(options) {
 }
 
 // control console outlet
-Game.prototype.announce = function(msg, log_level) {
+Game.prototype.announce = function(msg, log_level, dontIndent) {
 	if (log_level < this.settings.LOG_LEVEL) {
 		return;
+	}
+
+	if (/1 .*\(s\)/.test(msg)) {
+		msg = msg.replace("(s)", "");
+	} else {
+		msg = msg.replace("(s)", "s");
+	}
+
+	if (log_level === 0) {
+		msg = this.settings.name.bold + ": " + msg;
+	}
+
+	if (!dontIndent) {
+		msg = " ".repeat(this.timesCloned * 4) + msg;
 	}
 
 	if (log_level == 0) {
@@ -52,13 +66,18 @@ Game.prototype.announce = function(msg, log_level) {
 	}
 }
 
-Game.prototype.print = function() {
-	this.board.print(this.settings.name);
+Game.prototype.print = function(shouldIndent, printTitle) {
+	this.board.print(printTitle || this.settings.name, shouldIndent ? 0 : this.timesCloned);
 }
 
-Game.getAvailableMoves = function() {
+Game.prototype.getAvailableMoves = function() {
 	let availableMoves = this.board.getAvailableMoves(this.turn);
-	this.announce(`player ${ this.turn } can move in bins`, availableMoves.join(","), 0);
+	if (availableMoves.length === 0) {
+		this.announce(`${ this.settings.name.bold }: Player ${ this.turn } has no moves left!`, 1);
+		return availableMoves;
+	}
+	this.announce(`${ this.settings.name.bold }: Player ${ this.turn } can move in bins ${ availableMoves.join(", ").bold }`, 1);
+
 	return availableMoves;
 }
 
@@ -88,11 +107,11 @@ Game.prototype.move = function(bin_id) {
 		return false;
 	}
 
-	this.announce(`${ this.settings.name }: Player ${ this.turn } selected ${ bin_id } (${ this.board.bins[bin_id].stones } stones)`, 0);
+	this.announce(`Player ${ this.turn } selected ${ bin_id.bold } (${ String(this.board.bins[bin_id].stones).bold } stone(s))`, 0);
 
 	this.moves.push(bin_id);
-
 	let result = this.board.move(bin_id);
+
 	this.scoreboard = this.evaluateGame();
 
 	if (this.scoreboard.winner !== null) {
@@ -104,23 +123,26 @@ Game.prototype.move = function(bin_id) {
 			this.print();
 			return false;
 		}
-		this.announce(`Player ${ this.scoreboard.winner } wins in ${ this.turnCount } turns, ${ this.scoreboard.basin_A } to ${ this.scoreboard.basin_B }!`, 2);
 		this.print();
+		this.announce(`Player ${ this.scoreboard.winner } wins in ${ this.turnCount } turns, ${ this.scoreboard.basin_A } to ${ this.scoreboard.basin_B }!`, 2);
  		return false;
  	}
 
 	if (result.player_flip) {
 		if (result.stones_captured > 0) {
-			this.announce(`${ this.settings.name }: Player ${ this.turn } captured ${ result.stones_captured } stones by landing in ${ result.bin_end_id }. It is Player ${ this.turn === "A" ? "B" : "A" }'s turn.`, 0);
+			this.print();
+			this.announce(`Player ${ this.turn } captured ${ result.stones_captured } stones by landing in ${ result.bin_end_id }. It is Player ${ this.turn === "A" ? "B" : "A" }'s turn.`, 0);
 		} else {
-			this.announce(`${ this.settings.name }: Player ${ this.turn } finished in ${ result.bin_end_id }, storing ${ result.stones_scored } stone${ result.stones_scored === 1 ? "" : "s" }. It is Player ${ this.turn === "A" ? "B" : "A" }'s turn.`, 0);
+			this.print();
+			this.announce(`Player ${ this.turn } finished in ${ result.bin_end_id }, storing ${ result.stones_scored } stone${ result.stones_scored === 1 ? "" : "s" }. It is Player ${ this.turn === "A" ? "B" : "A" }'s turn.`, 0);
 		}
 
 		this.turn = this.turn === "A" ? "B" : "A";
 		this.turnCount += 1;
 		return true;
 	} else {
-		this.announce(`${ this.settings.name }: Player ${ this.turn } finished in her basin, storing ${ result.stones_scored } stone${ result.stones_scored === 1 ? "" : "s" }. It is still her turn.`, 0);
+		this.print();
+		this.announce(`Player ${ this.turn } finished in her basin, storing ${ result.stones_scored } stone(s)" }. It is still her turn.`, 0);
 		return true;
 	}
 }
@@ -240,9 +262,7 @@ Game.prototype.runScenario = function(scenario, scenarioName) {
 }
 
 // this is sloppy, but we need granular control over what gets cloned
-Game.prototype.clone = function() {
-	this.timesCloned += 1;
-
+Game.prototype.clone = function(bin_id) {
 	let cloneSettings = Object.assign({}, this.settings);
 
 	// cloneSettings.name += "." + this.timesCloned;
@@ -254,7 +274,16 @@ Game.prototype.clone = function() {
 	clone.turn = this.turn;
 	clone.moves = this.moves.slice(0);
 	clone.turnCount = this.turnCount;
-	clone.name = this.settings.id + "." + this.timesCloned;
+	clone.timesCloned = this.timesCloned + 1;
+
+	if (bin_id) {
+		clone.settings.name = this.settings.name + "." + bin_id.replace("bin_", "");
+	} else {
+		clone.settings.name = this.settings.name + "." + this.turnCount;
+	}
+
+	clone.announce(`Cloning game ${ this.settings.name } as ${ clone.settings.name } (id: ${ clone.settings.id })`, 0)
+	// clone.print();
 
 	return clone;
 }

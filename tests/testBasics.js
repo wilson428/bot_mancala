@@ -10,10 +10,11 @@ BOT MANCALA
 
 */
 
-const Game = require("./Game")
+const path = require("path");
+const Game = require(path.resolve(__dirname, "../Game"))
 
 const scenarios = {
-	tests: require("./scenarios/basics.json")
+	tests: require(path.resolve(__dirname, "scenarios/basics.json"))
 }
 
 let game = new Game({
@@ -42,8 +43,6 @@ function testCloning() {
 	game2.move("bin_B3");
 	game2.print();
 	console.log(game2.moves, game2.turn, game2.turnCount); // should include move from parent game
-
-
 
 	game.print(); // should be same as first print, unmodified by the move in the clone
 	console.log(game.moves, game.turn, game.turnCount); // should only have the first move
