@@ -1,15 +1,18 @@
 const colors = require('colors');
 
 // return an array of clones of possible moves for the active player
+// each array is a complete turn, even if the turn involved multiple moves
 const Simulation = function(game) {
 	this.game = game;
+	this.game.timesCloned = 0;
 	this.clones = [];
 
-	console.log(colors.bold( "Starting new scenario: " ) + colors.red(game.settings.name) + ".");
-	this.game.print();
+	game.announce(colors.bold( "Starting new scenario: " ) + colors.red(game.settings.name) + ".", 2);
+	this.game.print({ log_level: 2 });
 }
 
 // simulation a given move
+// if the move ends in a basin, try every subsequent move
 Simulation.prototype.tryMove = function(bin_id, game) {
 	let g = game || this.game;
 	clone = g.clone(bin_id);		
@@ -19,7 +22,9 @@ Simulation.prototype.tryMove = function(bin_id, game) {
 	// if we didn't end in a basin, add to clones and return;
 	if (clone.turn !== g.turn) {
 		this.clones.push(clone);
-		clone.announce("End of turn for game " + clone.settings.name.bold + "\n", 1);
+		if (clone.scoreboard.winner === null) {
+			clone.announce("End of turn for game " + clone.settings.name.bold + "\n", 1);
+		}
 		return;
 	}
 
@@ -27,6 +32,7 @@ Simulation.prototype.tryMove = function(bin_id, game) {
 }
 
 // try every available move for the Simulation's game
+// this returns only the conculsion of a turn, including a loss, victory or tie
 Simulation.prototype.tryEveryMove = function(game) {
 	let g = game || this.game;
 
@@ -37,32 +43,57 @@ Simulation.prototype.tryEveryMove = function(game) {
 	});
 
 	if (!game) {
-		console.log(`Games after ${ this.game.turnCount + 1 } turn(s): ${ this.clones.length }`);
+		g.announce(`Games after ${ this.game.turnCount + 1 } turn(s): ${ this.clones.length }`, 1);
 	}
+
+	return this.clones;
 }
 
-function lookAhead(games, moves) {
-	if (!Array.isArray(games)) {
-		games = [ games ];
-	}
 
-	if (typeof moves == "undefined") {
-		moves = 1;
-	}
+// internal function for simulating one turn for each of an array of games
+Simulation.prototype.lookAheadOneTurn = function(games) {
 
 	let nextTurn = [];
 
 	games.forEach(game => {
-		nextTurn = nextTurn.concat(simulateTurn(game))
+		let s = new Simulation(game);
+		nextTurn = nextTurn.concat(s.tryEveryMove());
 	});
 
-	moves -= 1;
+	nextTurn.forEach(g => {
+		if (g.scoreboard.winner !== null) {
+			this.resolutions.push(g);
+		} else {
+			this.outcomes.push(g);
+		}
+	});
 
-	if (moves == 0) {
-		return nextTurn;
+
+
+}
+
+// simulation through `depth` turns.
+Simulation.prototype.lookAhead = function(depth, games) {
+	this.outcomes = {};
+
+	if (typeof depth == "undefined") {
+		depth = 1;
 	}
 
-	lookAhead(nextTurn, moves);
+	if (!games) {
+		this.lookAheadOneTurn(depth, [ this.game ]);
+	}
+
+	depth -= 1;
+	this.game.announce(`Games after ${ results[0].turnCount } turn(s): ${ results.length }`, 3);
+
+	if (depth <= 0) {
+		this.game.announce(`Simulated ${ this.outcomes.length + this.resolutions.length } game(s) for "${ this.game.settings.name }" through turn ${ results[0].turnCount }.`, 3);
+		console.log("ALL DONE");
+		return;
+	} else {
+		return lookAhead(results);
+	}
 }
 
 module.exports = Simulation;

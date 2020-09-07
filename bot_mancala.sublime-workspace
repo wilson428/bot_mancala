@@ -519,33 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "index.js",
-			"settings":
-			{
-				"buffer_size": 1909,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Game/Actions.js",
-			"settings":
-			{
-				"buffer_size": 4196,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Game/Core.js",
-			"settings":
-			{
-				"buffer_size": 5179,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -671,6 +644,9 @@
 	},
 	"file_history":
 	[
+		"/Users/chriswilson/Dropbox/Private/games/bot_mancala/index.js",
+		"/Users/chriswilson/Dropbox/Private/games/bot_mancala/Game/Core.js",
+		"/Users/chriswilson/Dropbox/Private/games/bot_mancala/Game/Actions.js",
 		"/Users/wilson/Dropbox/Private/time/apps/development/center_of_covid/code/condense.js",
 		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/components/mapChartUS/mapUS.js",
 		"/Users/wilson/Dropbox/Private/time/apps/development/dashboard_covid/debug.js",
@@ -795,10 +771,7 @@
 		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/0-getResults.js",
 		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/calculated/AL.json",
 		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/results/AL.json",
-		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/delegateCount.csv",
-		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/getDistricts.js",
-		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/results/AR.json",
-		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/computed/SC.json"
+		"/Users/wilson/Dropbox/Private/time/politics/apps/elections_15_percent/code/delegateCount.csv"
 	],
 	"find":
 	{
@@ -833,117 +806,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1909,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1763,
-								1763
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 814.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Game/Actions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4196,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3241,
-								3241
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1268.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Game/Core.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5179,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1354,
-								1354
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 516.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],

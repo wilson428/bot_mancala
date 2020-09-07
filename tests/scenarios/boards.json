@@ -26,6 +26,35 @@
 			"name": "Multi-Step_Move"
 		},
 		"comment": "Player A wins 25-23 if she plays A1-A4-A1-A3-A1-A2-A1."		
-	}	
-	
+	},
+	"simple_lookahead": {
+		"A": {
+			"basin": 20,
+			"bins": [ 0, 0, 1, 1, 1, 0 ]
+		},
+		"B": {
+			"basin": 22,
+			"bins": [ 0, 0, 0, 1, 1, 1 ]
+		},
+		"settings": {
+			"name": "Simple_Lookahead"
+		},
+		"comment": "Testing a verysimple multi-step lookahead"		
+	},
+	"opening_gambit_4_1": {
+		"A": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"B": {
+			"basin": 0,
+			"bins": [ 4, 4, 4, 4, 4, 4 ]
+		},
+		"moves": ["B4", "B1"],
+		"turn": "B",
+		"settings": {
+			"name": "Opening_4_1"
+		},
+		"comment": "Testing responses to the most common opening move"
+	}
 }

@@ -10,11 +10,13 @@ BOT MANCALA
 
 */
 
+const INDENT_SPACING = 2;
+
 const Bin = function(player, number, stoneCount) {	
 	if (stoneCount === 0) {
 		this.id = "basin_" + player;
 	} else {
-		this.id = "bin_" + player + number;
+		this.id = player + number;
 	}
 
 	this.stones = stoneCount;
@@ -49,28 +51,28 @@ const Board = function() {
 		this.bins[bin.id] = bin;
 	}
 
-	this.bins.basin_A.next.A = this.bins.bin_B6;
-	this.bins.basin_B.next.B = this.bins.bin_A6;
+	this.bins.basin_A.next.A = this.bins.B6;
+	this.bins.basin_B.next.B = this.bins.A6;
 
 	for (let c = 6; c >= 1; c -= 1) {
-		let binA = this.bins["bin_A" + c];
-		binA.opposite = this.bins["bin_B" + (7 - c)];
+		let binA = this.bins["A" + c];
+		binA.opposite = this.bins["B" + (7 - c)];
 
-		let binB = this.bins["bin_B" + c];
-		binB.opposite = this.bins["bin_A" + (7 - c)];
+		let binB = this.bins["B" + c];
+		binB.opposite = this.bins["A" + (7 - c)];
 
 		if (c > 1) {
-			binA.next.A = this.bins["bin_A" + (c - 1)];
-			binA.next.B = this.bins["bin_A" + (c - 1)];
+			binA.next.A = this.bins["A" + (c - 1)];
+			binA.next.B = this.bins["A" + (c - 1)];
 		
-			binB.next.A = this.bins["bin_B" + (c - 1)];
-			binB.next.B = this.bins["bin_B" + (c - 1)];
+			binB.next.A = this.bins["B" + (c - 1)];
+			binB.next.B = this.bins["B" + (c - 1)];
 		} else {
 			binA.next.A = this.bins["basin_A"];
-			binA.next.B = this.bins["bin_B6"];
+			binA.next.B = this.bins["B6"];
 		
 			binB.next.B = this.bins["basin_B"];
-			binB.next.A = this.bins["bin_A6"];
+			binB.next.A = this.bins["A6"];
 		}
 	}
 }
@@ -78,7 +80,7 @@ const Board = function() {
 Board.prototype.print = function(name, indent) {
 	name = name || "Current Game";
 	indent = indent || 0;
-	indent = " ".repeat(indent * 4);
+	indent = " ".repeat(indent * INDENT_SPACING);
 
 
 	let l = name.length;
@@ -89,23 +91,23 @@ Board.prototype.print = function(name, indent) {
 	console.log(indent + `-----------------------------------------`.gray);
 	console.log(indent + 
 		`|    `.gray +
-		`| ${ this.bins.bin_B1.stringify().red } `.gray +
-		`| ${ this.bins.bin_B2.stringify().red } `.gray + 
-		`| ${ this.bins.bin_B3.stringify().red } `.gray + 
-		`| ${ this.bins.bin_B4.stringify().red } `.gray + 
-		`| ${ this.bins.bin_B5.stringify().red } `.gray + 
-		`| ${ this.bins.bin_B6.stringify().red } `.gray + 
+		`| ${ this.bins.B1.stringify().red } `.gray +
+		`| ${ this.bins.B2.stringify().red } `.gray + 
+		`| ${ this.bins.B3.stringify().red } `.gray + 
+		`| ${ this.bins.B4.stringify().red } `.gray + 
+		`| ${ this.bins.B5.stringify().red } `.gray + 
+		`| ${ this.bins.B6.stringify().red } `.gray + 
 		`|    |`.gray
 	);
 	console.log(indent + `| ${ this.bins.basin_B.stringify().bold.red } | --------------------------- | ${ this.bins.basin_A.stringify().bold.green } |`);
 	console.log(indent + 
 		`|    `.gray +
-		`| ${ this.bins.bin_A6.stringify().green } `.gray +
-		`| ${ this.bins.bin_A5.stringify().green } `.gray + 
-		`| ${ this.bins.bin_A4.stringify().green } `.gray + 
-		`| ${ this.bins.bin_A3.stringify().green } `.gray + 
-		`| ${ this.bins.bin_A2.stringify().green } `.gray + 
-		`| ${ this.bins.bin_A1.stringify().green } `.gray + 
+		`| ${ this.bins.A6.stringify().green } `.gray +
+		`| ${ this.bins.A5.stringify().green } `.gray + 
+		`| ${ this.bins.A4.stringify().green } `.gray + 
+		`| ${ this.bins.A3.stringify().green } `.gray + 
+		`| ${ this.bins.A2.stringify().green } `.gray + 
+		`| ${ this.bins.A1.stringify().green } `.gray + 
 		`|    |`.gray
 	);
 	console.log(indent + `-----------------------------------------`.gray);
@@ -125,8 +127,8 @@ Board.prototype.serialize = function() {
 	}
 
 	for (let c = 6; c >= 1; c -= 1) {
-		json.A.bins.push(this.bins["bin_A" + c].stones);
-		json.B.bins.push(this.bins["bin_B" + c].stones);
+		json.A.bins.push(this.bins["A" + c].stones);
+		json.B.bins.push(this.bins["B" + c].stones);
 	}
 
 	return json;
@@ -134,18 +136,14 @@ Board.prototype.serialize = function() {
 
 // returns the info on the bin the last stone landed, whether the turn flips, and stones captured
 Board.prototype.move = function(bin_id) {
-	if (bin_id.length == 2) {
-		bin_id = "bin_" + bin_id;
-	}
-
-	let player_id = bin_id[4]; // we need to know the player so as to know which basin to skip
+	let player_id = bin_id[0]; // we need to know the player so as to know which basin to skip
 	let currentBin = this.bins[bin_id];
 	let stoneCount = currentBin.stones;
 
 	let response = {
 		player_id: player_id,
-		bin_start_id: bin_id,
-		bin_end_id: null,
+		bin_id_start: bin_id,
+		bin_id_end: null,
 		player_flip: true,
 		stones_scored: 0,
 		stones_captured: 0
@@ -164,7 +162,7 @@ Board.prototype.move = function(bin_id) {
 		}
 	}
 
-	response.bin_end_id = currentBin.id;
+	response.bin_id_end = currentBin.id;
 
 	// check if we ended in a basin
 	if (/basin/.test(currentBin.id)) {
@@ -173,7 +171,7 @@ Board.prototype.move = function(bin_id) {
 	}
 
 	// check for capture
-	if (player_id == currentBin.id[4] && currentBin.stones == 1 && currentBin.opposite.stones > 0) {
+	if (player_id == currentBin.id[0] && currentBin.stones == 1 && currentBin.opposite.stones > 0) {
 		this.bins["basin_" + player_id].stones += currentBin.opposite.stones;
 		this.bins["basin_" + player_id].stones += 1; // account for the capturing stone also going to the basin
 
@@ -192,8 +190,8 @@ Board.prototype.loadScenario = function(scenario) {
 	this.bins.basin_B.stones = scenario.B.basin;
 
 	for (let c = 0; c < 6; c += 1) {
-		this.bins["bin_A" + (6 - c)].stones = scenario.A.bins[c];
-		this.bins["bin_B" + (6 - c)].stones = scenario.B.bins[c];
+		this.bins["A" + (6 - c)].stones = scenario.A.bins[c];
+		this.bins["B" + (6 - c)].stones = scenario.B.bins[c];
 	}
 }
 
@@ -201,7 +199,7 @@ Board.prototype.getAvailableMoves = function(player_id) {
 	let availableBins = [];
 
 	for (let c = 6; c >= 1; c -= 1) {
-		let bin_id = "bin_" + player_id + c;
+		let bin_id = player_id + c;
 		if (this.bins[bin_id].stones > 0) {
 			availableBins.push(bin_id);
 		}

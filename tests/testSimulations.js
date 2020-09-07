@@ -21,16 +21,26 @@ const scenarios = {
 
 function testSimulation(scenario_id) {
 	let game = new Game({
-		LOG_LEVEL: 0,
+		LOG_LEVEL: 1,
 		playUntilEnd: true
 	});
 
-	game.loadScenario(scenarios.boards[scenario_id])
+	if (scenarios.boards[scenario_id].hasOwnProperty("moves")) {
+		game.runScenario(scenarios.boards[scenario_id]);
+	} else {
+		game.loadScenario(scenarios.boards[scenario_id]);
+	}
+
 
 	let s = new Simulation(game);
 
-	s.tryEveryMove();
+	let moves = s.tryEveryMove();
+	console.log(moves);
+
+	// s.lookAhead(2);
 }
 
-// testSimulation("default");
-testSimulation("multistep");
+testSimulation("default");
+// testSimulation("multistep");
+// testSimulation("simple_lookahead");
+// testSimulation("opening_gambit_4_1")
