@@ -29,12 +29,12 @@ const Game = function(options) {
 	this.turn = this.settings.firstTurn;
 
 	this.turnCount = 0;
-	this.moves = [];
+	this.moves = []; // array of moves, bin by bin
+	this.currentTurn = []; // moves for the current turn, whether or not yet complete
+	this.history = []; // array of turns, with moves per turn in each cell
 	this.active = true;
 	this.scoreboard = null;
 	this.timesCloned = 0; // useful for unique names of clones
-
-
 	this.board = new Board();
 }
 
@@ -119,6 +119,8 @@ Game.prototype.move = function(bin_id) {
 	this.announce(`Player ${ this.turn } selected ${ bin_id.bold } (${ String(this.board.bins[bin_id].stones).bold } stone(s))`, 1);
 
 	this.moves.push(bin_id);
+	this.currentTurn.push(bin_id);
+
 	let result = this.board.move(bin_id);
 
 	this.scoreboard = this.evaluateGame();
@@ -126,6 +128,8 @@ Game.prototype.move = function(bin_id) {
 	if (this.scoreboard.winner !== null) {
 		this.active = false;
 		this.turnCount += 1;
+		this.history.push(this.currentTurn.slice(0));
+		this.currentTurn = [];
 
 		if (this.scoreboard.winner === "tie") {
 			this.print({ log_level: 2 });
@@ -147,7 +151,10 @@ Game.prototype.move = function(bin_id) {
 		}
 
 		this.turn = this.turn === "A" ? "B" : "A";
+		this.history.push(this.currentTurn.slice(0));
+		this.currentTurn = [];
 		this.turnCount += 1;
+
 		return true;
 	} else {
 		this.print({ log_level: 0 });
@@ -176,7 +183,6 @@ Game.prototype.evaluateGame = function() {
 			outcome["bins_" + player_id] = 0;
 		}		
 	}
-
 
 	if (!this.settings.playUntilEnd) {
 		if (outcome.basin_A > 24) {
@@ -287,6 +293,8 @@ Game.prototype.clone = function(bin_id) {
 	clone.board.loadScenario(this.board.serialize());
 	clone.turn = this.turn;
 	clone.moves = this.moves.slice(0);
+	clone.history = JSON.parse(JSON.stringify(this.history));
+
 	clone.turnCount = this.turnCount;
 	clone.timesCloned = this.timesCloned + 1;
 

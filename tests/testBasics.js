@@ -23,29 +23,34 @@ let game = new Game({
 });
 
 function testScenario(scenario_id) {
-	game.runScenario(scenarios.tests[scenario_id]); 
+	game.runScenario(scenarios.tests[scenario_id]);
 }
 
 // test cloning to make sure a move in the clone doesn't mutate the parent
 function testCloning() {
 	game.move("A3");
+	game.move("B4");
+	game.move("B1");
 	game.print();
-	console.log(game.moves, game.turn, game.turnCount);
+	console.log(game.settings.name, game.turn, game.turnCount, game.moves, game.history);
 
 	let game1 = game.clone();
 
-	game1.move("B4");
+	game1.move("A5");
 	game1.print();
-	console.log(game1.moves, game1.turn, game1.turnCount); // should include move from parent game
+	// should include move from parent game
+	console.log(game1.settings.name, game1.turn, game1.turnCount, game1.moves, game1.history);
 
 	let game2 = game1.clone();
 
-	game2.move("B3");
+	game2.move("A2");
 	game2.print();
-	console.log(game2.moves, game2.turn, game2.turnCount); // should include move from parent game
+	console.log(game2.settings.name, game2.turn, game2.turnCount, game2.moves, game2.history);
 
-	game.print(); // should be same as first print, unmodified by the move in the clone
-	console.log(game.moves, game.turn, game.turnCount); // should only have the first move
+
+	game.print();
+	// should be same as first print, unmodified by the move in the clone
+	console.log(game.settings.name, game.turn, game.turnCount, game.moves, game.history);
 }
 
 // testScenario("basic"); // a simple move
@@ -56,4 +61,5 @@ function testCloning() {
 // testScenario("endGame2"); // A 25-point cutoff finale 
 // testScenario("endGame3"); // Should be a tie when Player B's remaining stones are apportioned.
 
-// testCloning();
+
+testCloning();
