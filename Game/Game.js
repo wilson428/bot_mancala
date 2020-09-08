@@ -72,8 +72,10 @@ Game.prototype.announce = function(msg, log_level, dontIndent) {
 		console.log(msg.magenta);
 	} else if (log_level == 2) {
 		console.log(msg.bold);
-	} else {
-		console.log(msg.bold.bgYellow);		
+	} else if (log_level == 3) {
+		console.log(msg.bold.brightWhite.bgGray);		
+	} else if (log_level == 4) {
+		console.log(msg.bold.brightYellow.bgCyan);
 	}
 }
 
@@ -92,7 +94,6 @@ Game.prototype.print = function(options) {
 }
 
 Game.prototype.getAvailableMoves = function() {
-	console.log("T", this.turn);
 	let availableMoves = this.board.getAvailableMoves(this.turn);
 	if (availableMoves.length === 0) {
 		this.announce(`${ this.settings.name.bold }: Player ${ this.turn } has no moves left!`, 1);

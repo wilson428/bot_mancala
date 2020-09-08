@@ -21,7 +21,7 @@ const scenarios = {
 
 function testSimulation(scenario_id) {
 	let game = new Game({
-		LOG_LEVEL: 1,
+		LOG_LEVEL: 2,
 		playUntilEnd: true
 	});
 
@@ -47,10 +47,10 @@ function testSimulation(scenario_id) {
 	*/
 
 
-	// s.lookAhead(1);
+	s.lookAhead(2);
 }
 
-// testSimulation("default");
-testSimulation("multistep");
+testSimulation("default");
+// testSimulation("multistep");
 // testSimulation("simple_lookahead");
 // testSimulation("opening_gambit_4_1")

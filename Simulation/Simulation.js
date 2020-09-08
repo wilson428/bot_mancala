@@ -7,7 +7,7 @@ const Simulation = function(game) {
 	this.game.timesCloned = 0;
 	this.clones = [];
 
-	game.announce(colors.bold( "Starting new scenario: " ) + colors.red(game.settings.name) + ".", 2);
+	game.announce(colors.bold( "Starting new scenario: " ) + colors.red(game.settings.name), 2);
 	this.game.print({ log_level: 2 });
 }
 
@@ -43,56 +43,45 @@ Simulation.prototype.tryEveryMove = function(game) {
 	});
 
 	if (!game) {
-		g.announce(`Games after ${ this.game.turnCount + 1 } turn(s): ${ this.clones.length }`, 1);
+		g.announce(`Moves in turn ${ this.game.turnCount + 1 } of ${ this.game.settings.name }: ${ this.clones.length }`, 2);
 	}
 
 	return this.clones;
 }
 
-
-// internal function for simulating one turn for each of an array of games
-Simulation.prototype.lookAheadOneTurn = function(games) {
-
-	let nextTurn = [];
-
-	games.forEach(game => {
-		let s = new Simulation(game);
-		nextTurn = nextTurn.concat(s.tryEveryMove());
-	});
-
-	nextTurn.forEach(g => {
-		if (g.scoreboard.winner !== null) {
-			this.resolutions.push(g);
-		} else {
-			this.outcomes.push(g);
-		}
-	});
-
-
-
-}
-
 // simulation through `depth` turns.
 Simulation.prototype.lookAhead = function(depth, games) {
-	this.outcomes = {};
-
 	if (typeof depth == "undefined") {
 		depth = 1;
 	}
 
 	if (!games) {
-		this.lookAheadOneTurn(depth, [ this.game ]);
-		depth -= 1;
+		return this.lookAhead(depth, [ this.game ]);
 	}
 
-	while (depth > 0) {
-		this.lookAheadOneTurn(depth, [ this.game ]);
-		depth -= 1;
-		this.game.announce(`Games after ${ results[0].turnCount } turn(s): ${ results.length }`, 3);
+	// simulate every move for every game
+	let nextTurn = [];
+
+	games.forEach(game => {
+		// check if game is resolved and keep it as is
+		if (!game.active) {
+			nextTurn.push(game);
+			return;
+		}
+		let s = new Simulation(game);
+		nextTurn = nextTurn.concat(s.tryEveryMove());
+	});
+
+	this.game.announce(`Games after ${ nextTurn[0].turnCount } turn(s): ${ nextTurn.length }`, 3);
+
+	depth -= 1;
+
+	if (depth > 0) {
+		return this.lookAhead(depth, nextTurn);
+	} else {
+		this.game.announce(`Simulated ${ nextTurn.length } game(s) for "${ this.game.settings.name }" through turn ${ nextTurn[0].turnCount }.`, 4);
 	}
 
-	this.game.announce(`Simulated ${ this.outcomes.length + this.resolutions.length } game(s) for "${ this.game.settings.name }" through turn ${ results[0].turnCount }.`, 3);
-	console.log("ALL DONE");
 }
 
 module.exports = Simulation;
