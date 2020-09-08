@@ -122,8 +122,7 @@ Board.prototype.serialize = function() {
 		B: {
 			basin: this.bins.basin_B.stones,
 			bins: []
-		},
-		moves: this.moves
+		}
 	}
 
 	for (let c = 6; c >= 1; c -= 1) {

@@ -3,6 +3,10 @@ const shortid = require('shortid');
 const colors = require('colors');
 const INDENT_SPACING = 2;
 
+function randomElement(array) {
+	return array[Math.floor(array.length * Math.random())];
+}
+
 const Game = function(options) {
 	let default_settings = {
 		id: null,
@@ -31,11 +35,15 @@ const Game = function(options) {
 	this.turnCount = 0;
 	this.moves = []; // array of moves, bin by bin
 	this.currentTurn = []; // moves for the current turn, whether or not yet complete
+	this.allTurns = []; // array of turns, with moves per turn in each cell
 	this.history = []; // array of turns, with moves per turn in each cell
 	this.active = true;
 	this.scoreboard = null;
 	this.timesCloned = 0; // useful for unique names of clones
 	this.board = new Board();
+
+	this.parent = null;
+	this.clones = null;
 }
 
 // control console outlet
@@ -84,6 +92,7 @@ Game.prototype.print = function(options) {
 }
 
 Game.prototype.getAvailableMoves = function() {
+	console.log("T", this.turn);
 	let availableMoves = this.board.getAvailableMoves(this.turn);
 	if (availableMoves.length === 0) {
 		this.announce(`${ this.settings.name.bold }: Player ${ this.turn } has no moves left!`, 1);
@@ -128,7 +137,12 @@ Game.prototype.move = function(bin_id) {
 	if (this.scoreboard.winner !== null) {
 		this.active = false;
 		this.turnCount += 1;
-		this.history.push(this.currentTurn.slice(0));
+
+		this.allTurns.push(this.currentTurn);
+		this.history.push({
+			moves: this.allTurns.slice(0),
+			board: this.board.serialize()
+		});
 		this.currentTurn = [];
 
 		if (this.scoreboard.winner === "tie") {
@@ -151,7 +165,12 @@ Game.prototype.move = function(bin_id) {
 		}
 
 		this.turn = this.turn === "A" ? "B" : "A";
-		this.history.push(this.currentTurn.slice(0));
+
+		this.allTurns.push(this.currentTurn);		
+		this.history.push({
+			moves: this.allTurns.slice(0),
+			board: this.board.serialize()
+		});
 		this.currentTurn = [];
 		this.turnCount += 1;
 
@@ -160,6 +179,16 @@ Game.prototype.move = function(bin_id) {
 		this.print({ log_level: 0 });
 		this.announce(`Player ${ this.turn } finished in her basin, storing ${ result.stones_scored } stone(s). It is still her turn.`, 0);
 		return true;
+	}
+}
+
+// move randomly until turn is over
+Game.prototype.moveRandomly = function() {
+	let availableMoves = this.getAvailableMoves();
+	let currentTurn = this.turn;
+
+	while (currentTurn == this.turn) {
+		this.move(randomElement(availableMoves));
 	}
 }
 
@@ -306,6 +335,8 @@ Game.prototype.clone = function(bin_id) {
 	}
 
 	clone.announce(`Cloning game ${ this.settings.name } as ${ clone.settings.name } (id: ${ clone.settings.id })`, 0)
+
+	clone.parent = this;
 
 	return clone;
 }

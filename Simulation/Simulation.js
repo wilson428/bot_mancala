@@ -82,18 +82,17 @@ Simulation.prototype.lookAhead = function(depth, games) {
 
 	if (!games) {
 		this.lookAheadOneTurn(depth, [ this.game ]);
+		depth -= 1;
 	}
 
-	depth -= 1;
-	this.game.announce(`Games after ${ results[0].turnCount } turn(s): ${ results.length }`, 3);
-
-	if (depth <= 0) {
-		this.game.announce(`Simulated ${ this.outcomes.length + this.resolutions.length } game(s) for "${ this.game.settings.name }" through turn ${ results[0].turnCount }.`, 3);
-		console.log("ALL DONE");
-		return;
-	} else {
-		return lookAhead(results);
+	while (depth > 0) {
+		this.lookAheadOneTurn(depth, [ this.game ]);
+		depth -= 1;
+		this.game.announce(`Games after ${ results[0].turnCount } turn(s): ${ results.length }`, 3);
 	}
+
+	this.game.announce(`Simulated ${ this.outcomes.length + this.resolutions.length } game(s) for "${ this.game.settings.name }" through turn ${ results[0].turnCount }.`, 3);
+	console.log("ALL DONE");
 }
 
 module.exports = Simulation;
