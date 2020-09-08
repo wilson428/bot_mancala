@@ -35,7 +35,10 @@ function testSimulation(scenario_id) {
 	let s = new Simulation(game);
 
 	let moves = s.tryEveryMove();
-	console.log(moves);
+
+	moves.forEach(m => {
+		console.log(m.settings.name, m.history);
+	})
 
 	// s.lookAhead(2);
 }

@@ -293,6 +293,7 @@ Game.prototype.clone = function(bin_id) {
 	clone.board.loadScenario(this.board.serialize());
 	clone.turn = this.turn;
 	clone.moves = this.moves.slice(0);
+	clone.currentTurn = this.currentTurn.slice(0);
 	clone.history = JSON.parse(JSON.stringify(this.history));
 
 	clone.turnCount = this.turnCount;
