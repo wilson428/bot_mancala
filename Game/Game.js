@@ -7,6 +7,18 @@ function randomElement(array) {
 	return array[Math.floor(array.length * Math.random())];
 }
 
+function commafy(val) {
+	if (typeof val !== "number") {
+		return;
+	}
+	val = parseInt(val, 10);
+
+	while (/(\d+)(\d{3})/.test(val.toString())) {
+		val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+	}
+	return val;
+};
+
 const Game = function(options) {
 	let default_settings = {
 		id: null,
@@ -27,8 +39,9 @@ const Game = function(options) {
 		this.settings.name = "Game " + uid;
 	}
 
-	this.settings.time_start = (new Date()).getTime();
+	this.settings.time_start = new Date();
 	this.settings.time_end = null;
+	this.settings.time_elapsed = 0;
 
 	this.turn = this.settings.firstTurn;
 
@@ -58,6 +71,8 @@ Game.prototype.announce = function(msg, log_level, dontIndent) {
 		msg = msg.replace("(s)", "s");
 	}
 
+	msg = msg.replace(/\d+/g, d => commafy(+d));
+
 	if (log_level === 0) {
 		msg = this.settings.name.bold + ": " + msg;
 	}
@@ -77,6 +92,11 @@ Game.prototype.announce = function(msg, log_level, dontIndent) {
 	} else if (log_level == 4) {
 		console.log(msg.bold.brightYellow.bgCyan);
 	}
+}
+
+Game.prototype.getElapsed = function() {
+	let d = new Date();
+	this.settings.time_elapsed = (d.getTime() - this.settings.time_start.getTime()) / 1000;	
 }
 
 Game.prototype.print = function(options) {
@@ -135,9 +155,13 @@ Game.prototype.move = function(bin_id) {
 
 	this.scoreboard = this.evaluateGame();
 
+	// IF THE GAME IS OVER
 	if (this.scoreboard.winner !== null) {
 		this.active = false;
 		this.turnCount += 1;
+
+		this.settings.time_end = new Date();
+		this.getElapsed();
 
 		this.allTurns.push(this.currentTurn);
 		this.history.push({

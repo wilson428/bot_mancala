@@ -47,7 +47,7 @@ function testSimulation(scenario_id) {
 	*/
 
 
-	s.lookAhead(2);
+	s.lookAhead(5);
 }
 
 testSimulation("default");

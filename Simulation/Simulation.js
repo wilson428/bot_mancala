@@ -79,7 +79,8 @@ Simulation.prototype.lookAhead = function(depth, games) {
 	if (depth > 0) {
 		return this.lookAhead(depth, nextTurn);
 	} else {
-		this.game.announce(`Simulated ${ nextTurn.length } game(s) for "${ this.game.settings.name }" through turn ${ nextTurn[0].turnCount }.`, 4);
+		this.game.getElapsed();
+		this.game.announce(`Simulated ${ nextTurn.length } game(s) for "${ this.game.settings.name }" through turn ${ nextTurn[0].turnCount } in ${ this.game.settings.time_elapsed }s.`, 4);
 	}
 
 }
